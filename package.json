@@ -1,0 +1,30 @@
+{
+  "name": "discord-ekonomi-bot-main",
+  "version": "1.1.0",
+  "description": "Discord Ekonomi botu.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Akerem17/discord-ekonomi-bot.git"
+  },
+  "keywords": [
+    "bot",
+    "discord",
+    "discord-bot",
+    "discord-economy",
+    "discord-economy-bot"
+  ],
+  "author": "Akerem17",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Akerem17/discord-ekonomi-bot/issues"
+  },
+  "homepage": "https://github.com/Akerem17/discord-ekonomi-bot#readme",
+  "dependencies": {
+    "discord.js": "^13.12.0",
+    "quick.db": "^7.1.3"
+  }
+}

@@ -1,23 +1,30 @@
-﻿const db = require("quick.db");
+//Gerekli modülleri içe aktar.
+const db = require("quick.db");
 
-exports.run = function (client, message) {
+//Komut çalıştığında işlem yap.
+exports.run = (client, mesaj, argumanlar) => {
 
-  var bakiye = db.fetch(`${message.guild.id}_${message.author.id}_bakiye`);//Kullanıcının bakiye verisini çağır ve veriyi "bakiye" değişkenine ata.
-  //"{message.guild.id}_${message.author.id}_bakiye" sadece o sunucu için ayarlar, eğer tüm sunucularda aynı olacaksa "{message.author.id}_bakiye" olarak ayarla.
+  //Kullanıcının bakiye verisini çağır ve veriyi "bakiye" değişkenine ata.
+  var bakiye = db.get(`${mesaj.guild.id}_${mesaj.author.id}_bakiye`);
+  //"{mesaj.guild.id}_${mesaj.author.id}_bakiye" sadece o sunucu için ayarlar, eğer tüm sunucularda geçerli olacaksa "{mesaj.author.id}_bakiye" şeklinde ayarla.
+  
+  //Eğer bakiye değeri yoksa, 0 olarak göster.
+  if (bakiye === null) bakiye = 0;
 
-  if (bakiye === null) bakiye = 0; //Eğer bakiye daha önce belirtilmemişse, 0 olarak ayarla.
-
-
-  message.channel.send(`${message.author} kişisinde **${bakiye}** TL var.`)//Komudun yazıldığı kanala çıktı gönder.
+  //Komudun yazıldığı kanala çıktı gönder.
+  mesaj.channel.send(`${mesaj.author} kullanıcısının bakiyesi **${bakiye}**.`)
 };
 
 exports.conf = {
+  //Alternatif kullanımlar.
   aliases: [],
+  //Gerektirdiği yetki.
   permLevel: 0
 };
 
 exports.help = {
+  //Komudun ana kullanımı.
   name: 'bakiye',
-  description: 'Bakiye sorgular.',
-  usage: 'bakiye',
+  //İsteğe bağlı açıklama.
+  description: 'Bakiye sorgular.'
 };
